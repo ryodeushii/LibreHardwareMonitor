@@ -1824,6 +1824,7 @@ internal sealed class SuperIOHardware : Hardware
                     case Model.Z690_AORUS_PRO:
                     case Model.Z690_AORUS_ULTRA: // ITE IT8689E
                     case Model.Z690_AORUS_MASTER: // ITE IT8689E
+                    case Model.Z790_AORUS_MASTER_X: // ITE IT8689E
                         v.Add(new Voltage("Vcore", 0));
                         v.Add(new Voltage("+3.3V", 1, 6.49f, 10));
                         v.Add(new Voltage("+12V", 2, 5f, 1));
@@ -2377,6 +2378,27 @@ internal sealed class SuperIOHardware : Hardware
                         c.Add(new Control("System Fan #5 / Pump", 0));
                         c.Add(new Control("System Fan #6 / Pump", 1));
                         c.Add(new Control("System Fan #4", 2));
+                        break;
+
+                    case Model.Z790_AORUS_MASTER_X: // ITE IT87952E
+                        v.Add(new Voltage("Vcore", 0));
+                        v.Add(new Voltage("CPU VDD2", 1));
+                        v.Add(new Voltage("Chipset +0.82V", 2));
+                        v.Add(new Voltage("VCCSA", 3));
+                        v.Add(new Voltage("Chipset +1.8V", 4));
+                        v.Add(new Voltage("+3V Standby", 5, 10, 10));
+                        v.Add(new Voltage("CMOS Battery", 6, 10, 10));
+                        v.Add(new Voltage("AVCC3", 7));
+                        t.Add(new Temperature("PCIe x4", 0));
+                        t.Add(new Temperature("System #2", 2));
+                        f.Add(new Fan("System Fan #5 / Pump", 0));
+                        f.Add(new Fan("System Fan #6 / Pump", 1));
+                        f.Add(new Fan("System Fan #4", 2));
+                        c.Add(new Control("System Fan #5 / Pump", 0));
+                        c.Add(new Control("System Fan #6 / Pump", 1));
+                        c.Add(new Control("System Fan #4", 2));
+
+
                         break;
 
                     default:
@@ -3219,7 +3241,7 @@ internal sealed class SuperIOHardware : Hardware
                         f.Add(new Fan("Chassis Fan #1", 3)); // CHA_FAN1/WP
                         f.Add(new Fan("Chassis Fan #2", 4)); // CHA_FAN2/WP
                         f.Add(new Fan("Chassis Fan #3", 6)); // CHA_FAN3/WP
-                        
+
                         c.Add(new Control("CPU Fan #1", 1)); // CPU_FAN1
                         c.Add(new Control("CPU Fan #2", 0)); // CPU_FAN2/WP
                         c.Add(new Control("Chassis Fan #1", 3)); // CHA_FAN1/WP
@@ -4086,7 +4108,7 @@ internal sealed class SuperIOHardware : Hardware
                         v.Add(new Voltage("CMOS Battery", 8, 34, 34));
                         v.Add(new Voltage("CPU Termination", 9));
                         v.Add(new Voltage("CPU VDDIO / MC", 10, 1, 1));
-                        
+
                         t.Add(new Temperature("CPU", 22));
                         t.Add(new Temperature("Motherboard", 2));
                         t.Add(new Temperature("CPU Package", 3));

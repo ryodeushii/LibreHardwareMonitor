@@ -26,7 +26,7 @@ internal class IT87XX : ISuperIO
     private readonly int _gpioCount;
     private readonly bool _has16BitFanCounter;
     private readonly bool _hasExtReg;
-    private readonly bool[] _initialFanOutputModeEnabled = new bool[3]; // Initial Fan Controller Main Control Register value. 
+    private readonly bool[] _initialFanOutputModeEnabled = new bool[3]; // Initial Fan Controller Main Control Register value.
     private readonly byte[] _initialFanPwmControl = new byte[MaxFanHeaders]; // This will also store the 2nd control register value.
     private readonly byte[] _initialFanPwmControlExt = new byte[MaxFanHeaders];
     private readonly bool[] _restoreDefaultFanPwmControlRequired = new bool[MaxFanHeaders];
@@ -159,7 +159,7 @@ internal class IT87XX : ISuperIO
                 break;
 
             case Chip.IT87952E:
-                Voltages = new float?[6];
+                Voltages = new float?[8];
                 Temperatures = new float?[3];
                 Fans = new float?[3];
                 Controls = new float?[3];
@@ -186,7 +186,7 @@ internal class IT87XX : ISuperIO
                 Fans = new float?[3];
                 Controls = new float?[3];
                 break;
-            
+
             case Chip.IT8620E:
                 Voltages = new float?[9];
                 Temperatures = new float?[3];
